@@ -133,13 +133,13 @@ The PORTIA grammar includes:
 
 ## Reference Documentation
 
-**Grammar Visualization**: Open [`docs/CFG_Visualization.md`](docs/CFG_Visualization.md) for the complete human-readable grammar documentation with organized sections.
+**Grammar Visualization**: [`docs/CFG_Visualization.md`](docs/CFG_Visualization.md) - Complete human-readable grammar documentation with organized sections.
 
-**Algorithm Details**: See [`docs/ALGORITHM.md`](docs/ALGORITHM.md) for the FIRST/FOLLOW computation algorithms and implementation details.
+**Algorithm Details**: [`docs/ALGORITHM.md`](docs/ALGORITHM.md) - FIRST/FOLLOW computation algorithms and implementation details.
 
-**Generated Sets**: 
-- [`output/FIRST_FOLLOW_RAW.txt`](output/FIRST_FOLLOW_RAW.txt) - Machine-readable format
-- [`docs/FIRST_FOLLOW_SETS.md`](docs/FIRST_FOLLOW_SETS.md) - Human-readable tables with statistics
+**Generated Sets**: [`docs/FIRST_FOLLOW_SETS.md`](docs/FIRST_FOLLOW_SETS.md) - Human-readable tables with statistics
+
+> **Note**: The raw format output file (`output/FIRST_FOLLOW_RAW.txt`) is generated locally when you run the calculator and is not tracked in git.
 
 ## Integration with PORTIA Compiler
 
