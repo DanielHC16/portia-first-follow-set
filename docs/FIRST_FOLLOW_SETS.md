@@ -32,7 +32,7 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 
 | Non-Terminal | → | FIRST Set |
 |--------------|---|-----------|
-| `program` | → | { `//*`, `//`, `;`, `bool`, `char`, `double`, `float`, `global`, `id`, `int`, `long`, `string`, `weave` } |
+| `program` | → | { `//`, `/*`, `bool`, `char`, `double`, `float`, `global`, `id`, `int`, `long`, `string`, `weave` } |
 | `s_comment` | → | { `//`, `ε` } |
 | `m_comment` | → | { `/*`, `ε` } |
 | `main_func` | → | { `int` } |
@@ -43,7 +43,7 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 | `dtype` | → | { `bool`, `char`, `double`, `float`, `int`, `long`, `string` } |
 | `value` | → | { `boollit`, `charlit`, `doublelit`, `floatlit`, `intlit`, `longlit`, `stringlit` } |
 | `size` | → | { `intlit` } |
-| `data_type` | → | { `bool`, `char`, `double`, `float`, `int`, `long`, `string` } |
+| `dtype` | → | { `bool`, `char`, `double`, `float`, `int`, `long`, `string` } |
 | `arr_1D` | → | { `ε`, `bool`, `char`, `double`, `float`, `id`, `int`, `long`, `string` } |
 | `arr_1D_init` | → | { `ε`, `{` } |
 | `arr_value_1D` | → | { `,`, `ε`, `boollit`, `charlit`, `doublelit`, `floatlit`, `intlit`, `longlit`, `stringlit` } |
@@ -125,9 +125,6 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 | `iden_val` | → | { `.`, `ε`, `[` } |
 | `add_min_cont` | → | { `+`, `-`, `ε` } |
 | `mult_div_modulo_cont` | → | { `*`, `/`, `ε` } |
-| `arg` | → | { `ε`, `boollit`, `charlit`, `doublelit`, `floatlit`, `intlit`, `longlit`, `stringlit` } |
-| `arith_expr` | → | { `(`, `++`, `-`, `--`, `frac_lit`, `id`, `whole_lit` } |
-| `arr_1D` | → | { `ε`, `bool`, `char`, `double`, `float`, `id`, `int`, `long`, `string` } |
 | `arr_1D_UD` | → | { `ε`, `id` } |
 | `arr_1D_cont` | → | { `ε`, `boollit`, `charlit`, `doublelit`, `floatlit`, `intlit`, `longlit`, `stringlit` } |
 | `arr_1D_cont_val` | → | { `,`, `ε` } |
@@ -232,8 +229,6 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 
 | Non-Terminal | → | FOLLOW Set |
 |--------------|--|------------|
-| Non-Terminal | → | FOLLOW Set |
-|--------------|--|------------|
 | `program` | → | { `$` } |
 | `s_comment` | → | { `$`, `/*`, `//`, `;`, `bool`, `char`, `double`, `float`, `func`, `global`, `id`, `int`, `long`, `string`, `weave` } |
 | `m_comment` | → | { `$`, `/*`, `//`, `;`, `bool`, `char`, `double`, `float`, `func`, `global`, `id`, `int`, `long`, `string`, `weave` } |
@@ -328,10 +323,6 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 | `add_min_cont` | → | { `!=`, `&&`, `(`, `)`, `++`, `-`, `--`, `..`, `;`, `<`, `=`, `>`, `frac_lit`, `id`, `trap`, `whole_lit` } |
 | `mult_div_modulo_cont` | → | { `!=`, `&&`, `(`, `)`, `+`, `++`, `-`, `--`, `..`, `;`, `<`, `=`, `>`, `frac_lit`, `id`, `trap`, `whole_lit` } |
 | `mutability` | → | { `bool`, `char`, `double`, `float`, `int`, `long`, `string` } |
-| `multi_dec` | → | { `;` } |
-| `s_comment` | → | { `$`, `/*`, `//`, `;`, `bool`, `char`, `double`, `float`, `func`, `global`, `id`, `int`, `long`, `string`, `weave` } |
-| `m_comment` | → | { `$`, `/*`, `//`, `;`, `bool`, `char`, `double`, `float`, `func`, `global`, `id`, `int`, `long`, `string`, `weave` } |
-| `function` | → | { `/*`, `//`, `int` } |
 | `function_def` | → | { `/*`, `//`, `func`, `int` } |
 | `function_body` | → | { `}` } |
 | `param` | → | { `)` } |
@@ -422,7 +413,7 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 | `s_comment` | → | { `$`, `/*`, `//`, `;`, `bool`, `char`, `double`, `float`, `func`, `global`, `id`, `int`, `long`, `string`, `weave` } |
 | `size` | → | { `]` } |
 | `statement` | → | { `(`, `++`, `-`, `--`, `do`, `for`, `frac_lit`, `id`, `if`, `return`, `switch`, `thread`, `trap`, `while`, `whole_lit` } |
-| `statement_list` | → | { `return` } |
+| `statement_list` | → | { `return`, `ret_stmt` } |
 | `string_expr` | → | { `)`, `..` } |
 | `string_value` | → | { `)`, `..` } |
 | `switch_stmt` | → | { `(`, `++`, `-`, `--`, `break`, `do`, `for`, `frac_lit`, `id`, `if`, `return`, `switch`, `thread`, `trap`, `while`, `whole_lit`, `}` } |
