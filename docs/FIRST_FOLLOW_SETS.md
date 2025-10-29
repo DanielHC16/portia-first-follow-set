@@ -29,8 +29,7 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 
 > **Notation:** Sets are displayed using curly braces `{ }`. `ε` represents epsilon (empty/null production).
 
-| Non-Terminal | → | FIRST Set |
-|--------------|---|-----------|
+
 | Non-Terminal | → | FIRST Set |
 |--------------|---|-----------|
 | `program` | → | { `//*`, `//`, `;`, `bool`, `char`, `double`, `float`, `global`, `id`, `int`, `long`, `string`, `weave` } |
