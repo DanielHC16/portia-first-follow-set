@@ -129,8 +129,8 @@ def save_visualized_output(parser, first_sets, follow_sets, output_file):
         f.write("> **Notation:** Sets are displayed using curly braces `{ }`. `ε` represents epsilon (empty/null production).\n\n")
         
         # Create table
-        f.write("| Non-Terminal | FIRST Set |\n")
-        f.write("|--------------||-----------|\n")
+        f.write("| Non-Terminal | → | FIRST Set |\n")
+        f.write("|--------------|--||-----------|\n")
         
         non_terminals = sorted(parser.non_terminals)
         for nt in non_terminals:
@@ -138,7 +138,7 @@ def save_visualized_output(parser, first_sets, follow_sets, output_file):
             # Replace EPSILON with ε for better visualization
             first_set_display = [s.replace('EPSILON', 'ε') for s in first_set]
             first_str = ', '.join([f'`{s}`' for s in first_set_display])
-            f.write(f"| `{nt}` | {{ {first_str} }} |\n")
+            f.write(f"| `{nt}` | → | {{ {first_str} }} |\n")
         
         # FOLLOW sets
         f.write("\n---\n\n")
@@ -147,13 +147,13 @@ def save_visualized_output(parser, first_sets, follow_sets, output_file):
         f.write("> **Notation:** Sets are displayed using curly braces `{ }`. `$` represents the end-of-input marker.\n\n")
         
         # Create table
-        f.write("| Non-Terminal | FOLLOW Set |\n")
-        f.write("|--------------|------------|\n")
+        f.write("| Non-Terminal | → | FOLLOW Set |\n")
+        f.write("|--------------|--|------------|\n")
         
         for nt in non_terminals:
             follow_set = sorted(follow_sets.get(nt, set()))
             follow_str = ', '.join([f'`{s}`' for s in follow_set])
-            f.write(f"| `{nt}` | {{ {follow_str} }} |\n")
+            f.write(f"| `{nt}` | → | {{ {follow_str} }} |\n")
         
         # Statistics
         f.write("\n---\n\n")
