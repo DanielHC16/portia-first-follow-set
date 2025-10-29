@@ -29,7 +29,11 @@ portia-first-follow-set/
 **Example:**
 ```
 FIRST(program) = { /*, //, ;, bool, char, double, float, func, global, id, int, long, string, weave }
+FIRST(s_comment) = { //, EPSILON }
+FIRST(m_comment) = { /*, EPSILON }
+FIRST(main_func) = { int }
 FOLLOW(program) = { $ }
+FOLLOW(main_func) = { $, /*, // }
 ```
 
 #### `docs/FIRST_FOLLOW_SETS.md`
@@ -52,9 +56,21 @@ FOLLOW(program) = { $ }
 ## 📊 Statistics
 
 - **Total Non-terminals**: 98
-- **Total Terminals**: 70
+- **Total Terminals**: 72
 - **Start Symbol**: `program`
-- **Productions with EPSILON**: Multiple (see visualized output)
+- **Productions with EPSILON**: 43
+- **Grammar Structure**: 
+  - Production 1: `program` (start symbol)
+  - Productions 2-3: Comments (`s_comment`, `m_comment`)
+  - Productions 4-98: Language constructs
+
+## 🔍 Key Changes
+
+### Grammar Updates:
+1. **Comment Productions**: Moved to positions 2-3 for proper structure
+2. **Main Function**: Renamed `main` → `main_func` to avoid terminal/non-terminal ambiguity
+   - `main` is now clearly a terminal keyword
+   - `main_func` is the non-terminal for the main function production
 
 ## 🎯 Usage
 
@@ -115,7 +131,9 @@ Use these sets for:
 
 ---
 
-**Generated**: 2025-10-29
-**Grammar**: PORTIA Programming Language
-**Non-terminals**: 98
-**Terminals**: 70
+**Generated**: 2025-10-29  
+**Grammar**: PORTIA Programming Language  
+**Non-terminals**: 98  
+**Terminals**: 72  
+**Status**: ✅ Verified and aligned
+

@@ -7,6 +7,7 @@
 ## 📋 Table of Contents
 
 - [Program Structure](#program-structure)
+- [Comments](#comments)
 - [Global Declarations](#global-declarations)
 - [Data Types & Values](#data-types--values)
 - [Array Declarations](#array-declarations)
@@ -20,7 +21,6 @@
 - [Assignment Statements](#assignment-statements)
 - [Control Structures](#control-structures)
 - [Return Statements](#return-statements)
-- [Comments](#comments)
 
 ---
 
@@ -33,6 +33,20 @@ program         → s_comment m_comment global_dec s_comment m_comment
 main_func       → int main ( ) { main_body }
 
 main_body       → import_block local_block statement_list return intlit ;
+```
+
+---
+
+## Comments
+
+**Note**: Comment productions are placed early in the grammar (productions 2-3) to establish proper structure.
+
+```
+s_comment       → // comment
+                | ε
+
+m_comment       → /* comments */
+                | ε
 ```
 
 ---
@@ -442,23 +456,12 @@ ret_value       → value
 
 ---
 
-## Comments
-
-```
-s_comment       → // comment
-                | ε
-
-m_comment       → /* comments */
-                | ε
-```
-
----
-
 ## Production Summary
 
 | Category | Non-Terminals |
 |----------|---------------|
 | **Program** | program, main_func, main_body |
+| **Comments** | s_comment, m_comment |
 | **Declarations** | global_dec, local_dec, mutability, multi_dec |
 | **Data Types** | dtype, value, size, data_type |
 | **Arrays** | arr_1D, arr_2D, arr_1D_init, arr_2D_init, arr_value_1D, arr_value_2D |
@@ -471,7 +474,6 @@ m_comment       → /* comments */
 | **Assignment** | assign_stmt, assign_stmt_op |
 | **Control Flow** | ctrl_struct, conditional_stmt, loop_stmt, if_stmt, switch_stmt, for_stmt, while_stmt, do_stmt |
 | **Return** | ret_stmt, ret_value |
-| **Comments** | s_comment, m_comment |
 
 ---
 

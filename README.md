@@ -73,9 +73,12 @@ The PORTIA grammar is defined in [`grammar/CFG.txt`](grammar/CFG.txt) using EBNF
 ### Example Productions
 
 ```ebnf
-program -> s_comment m_comment global_dec s_comment m_comment function s_comment m_comment main s_comment m_comment
+program -> s_comment m_comment global_dec s_comment m_comment function s_comment m_comment main_func s_comment m_comment
+s_comment -> // comment | EPSILON
+m_comment -> /* comments */ | EPSILON
 dtype -> int | long | float | double | char | string | bool
 global_dec -> global mutability dtype id = value multi_dec ; global_dec | EPSILON
+main_func -> int main ( ) { main_body }
 ```
 
 **Important**: Place spaces between symbols you don't want read as one symbol. For example:
