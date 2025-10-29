@@ -4,7 +4,7 @@
 
 This repository contains the FIRST and FOLLOW sets generated from the PORTIA programming language grammar. These sets are essential for parser construction and will be integrated into the main PORTIA compiler.
 
-## � Quick Start - Using the Calculator
+## Quick Start - Using the Calculator
 
 ### When you update the grammar (`grammar/CFG.txt`):
 
@@ -29,14 +29,14 @@ This repository contains the FIRST and FOLLOW sets generated from the PORTIA pro
    - Ensure all non-terminals have valid FIRST/FOLLOW sets
 
 ### Output Files Updated Automatically:
-✅ `output/FIRST_FOLLOW_RAW.txt` - Machine-readable format  
-✅ `docs/FIRST_FOLLOW_SETS.md` - Human-readable tables with statistics
+`output/FIRST_FOLLOW_RAW.txt` - Machine-readable format  
+`docs/FIRST_FOLLOW_SETS.md` - Human-readable tables with statistics
 
 > **Note**: The calculator automatically handles epsilon productions, computes sets iteratively until fixpoint, and validates the grammar structure.
 
 ---
 
-## �📋 Purpose
+## Purpose
 
 FIRST and FOLLOW sets are used for:
 - **LL(1) Parser Construction**: Verifying the grammar is suitable for predictive parsing
@@ -44,14 +44,14 @@ FIRST and FOLLOW sets are used for:
 - **Conflict Detection**: Identifying grammar ambiguities
 - **Parser Development**: Reference for the PORTIA compiler team
 
-## 📊 What's Included
+## What's Included
 
 - **Grammar Definition**: PORTIA CFG in EBNF format
 - **FIRST Sets**: Complete FIRST sets for all grammar symbols
 - **FOLLOW Sets**: Complete FOLLOW sets for all non-terminals
 - **Documentation**: Grammar visualization and reference materials
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 first-follow-set/
@@ -61,9 +61,9 @@ first-follow-set/
 │   ├── CFG_Visualization.md        # Human-readable grammar reference
 │   ├── ALGORITHM.md                # FIRST/FOLLOW computation explanation
 │   ├── PROJECT_STRUCTURE.md        # Repository organization
-│   └── FIRST_FOLLOW_SETS.md        # ✨ Generated sets (visualized tables)
+│   └── FIRST_FOLLOW_SETS.md        # Generated sets (visualized tables)
 ├── output/
-│   └── FIRST_FOLLOW_RAW.txt        # ✨ Generated sets (raw text format)
+│   └── FIRST_FOLLOW_RAW.txt        # Generated sets (raw text format)
 ├── src/
 │   ├── main.py                     # Generator script
 │   ├── grammar_parser.py           # CFG parser
@@ -72,7 +72,7 @@ first-follow-set/
 └── README.md
 ```
 
-## 📊 Generated Files
+## Generated Files
 
 ### Raw Format (`output/FIRST_FOLLOW_RAW.txt`)
 Plain text format with FIRST and FOLLOW sets for all non-terminals. Easy to parse programmatically.
@@ -92,7 +92,7 @@ Markdown tables with formatted FIRST and FOLLOW sets, including statistics and s
 - Non-terminals with epsilon productions highlighted
 - Total of **98 non-terminals** and **72 terminals**
 
-## 📖 Grammar Specification
+## Grammar Specification
 
 The PORTIA grammar is defined in [`grammar/CFG.txt`](grammar/CFG.txt) using EBNF notation with the following conventions:
 
@@ -117,7 +117,7 @@ main_func -> int main ( ) { main_body }
 - `( A )` is three symbols: `(`, `A`, `)`
 - `(A)` is one symbol: `(A)`
 
-## 📖 PORTIA Language Features
+## PORTIA Language Features
 
 The PORTIA grammar includes:
 
@@ -131,7 +131,7 @@ The PORTIA grammar includes:
 - **Operators**: Arithmetic, relational, logical, and compound assignment
 - **Comments**: Single-line (`//`) and multi-line (`/* */`)
 
-## � Reference Documentation
+## Reference Documentation
 
 **Grammar Visualization**: Open [`docs/CFG_Visualization.md`](docs/CFG_Visualization.md) for the complete human-readable grammar documentation with organized sections.
 
@@ -141,7 +141,7 @@ The PORTIA grammar includes:
 - [`output/FIRST_FOLLOW_RAW.txt`](output/FIRST_FOLLOW_RAW.txt) - Machine-readable format
 - [`docs/FIRST_FOLLOW_SETS.md`](docs/FIRST_FOLLOW_SETS.md) - Human-readable tables with statistics
 
-## 🔗 Integration with PORTIA Compiler
+## Integration with PORTIA Compiler
 
 This repository will be linked to the main PORTIA compiler as a reference for:
 - Parser implementation
@@ -149,7 +149,7 @@ This repository will be linked to the main PORTIA compiler as a reference for:
 - Grammar validation
 - Development documentation
 
-## 👥 Team LoomVI
+## LoomVI | BSCS 3-3 2025-2026
 
 **PORTIA Programming Language Development Team**
 
@@ -162,7 +162,7 @@ This repository will be linked to the main PORTIA compiler as a reference for:
 | **Q/A Team** | Hershey Anne P. Dalangin |
 | **Q/A Team** | Sydney Angeleve M. Peña |
 
-### 🤝 Collaborative Development
+### Collaborative Development
 
 While each team member has a designated role, **LoomVI operates as a fully collaborative unit**. All team members actively contribute across different aspects of the PORTIA compiler project, including:
 

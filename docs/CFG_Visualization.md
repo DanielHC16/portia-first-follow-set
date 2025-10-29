@@ -7,7 +7,6 @@
 ## 📋 Table of Contents
 
 - [Program Structure](#program-structure)
-- [Comments](#comments)
 - [Global Declarations](#global-declarations)
 - [Data Types & Values](#data-types--values)
 - [Array Declarations](#array-declarations)
@@ -26,27 +25,25 @@
 
 ## Program Structure
 
+**Productions 1-3: Program Entry Point and Comments**
+
 ```
-program         → s_comment m_comment global_dec s_comment m_comment 
+1. program      → s_comment m_comment global_dec s_comment m_comment 
                   function s_comment m_comment main_func s_comment m_comment
 
+2. s_comment    → // comment
+                | ε
+
+3. m_comment    → /* comments */
+                | ε
+```
+
+**Main Function:**
+
+```
 main_func       → int main ( ) { main_body }
 
 main_body       → import_block local_block statement_list return intlit ;
-```
-
----
-
-## Comments
-
-**Note**: Comment productions are placed early in the grammar (productions 2-3) to establish proper structure.
-
-```
-s_comment       → // comment
-                | ε
-
-m_comment       → /* comments */
-                | ε
 ```
 
 ---
