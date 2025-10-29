@@ -130,7 +130,7 @@ def save_visualized_output(parser, first_sets, follow_sets, output_file):
         
         # Create table
         f.write("| Non-Terminal | → | FIRST Set |\n")
-        f.write("|--------------|--||-----------|\n")
+        f.write("|--------------|---|-----------|\n")
         
         non_terminals = sorted(parser.non_terminals)
         for nt in non_terminals:

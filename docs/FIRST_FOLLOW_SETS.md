@@ -30,8 +30,8 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 > **Notation:** Sets are displayed using curly braces `{ }`. `ε` represents epsilon (empty/null production).
 
 | Non-Terminal | → | FIRST Set |
-|--------------|--||-----------|
-| `I_O_stmt` | → | { `thread`, `trap` } |
+|--------------|---|-----------|
+| `program` | → | { `//*`, `//`, `;`, `bool`, `char`, `double`, `float`, `global`, `id`, `int`, `long`, `string`, `weave` } |
 | `add_min_cont` | → | { `+`, `-`, `ε` } |
 | `arg` | → | { `ε`, `boollit`, `charlit`, `doublelit`, `floatlit`, `intlit`, `longlit`, `stringlit` } |
 | `arith_expr` | → | { `(`, `++`, `-`, `--`, `frac_lit`, `id`, `whole_lit` } |
@@ -252,7 +252,7 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 ### FOLLOW Sets
 
 - **Average FOLLOW set size**: 7.21
-- **Largest FOLLOW set**: `num_lit_type` with 19 elements
+- **Largest FOLLOW set**: `factor` with 19 elements
 
 ---
 
