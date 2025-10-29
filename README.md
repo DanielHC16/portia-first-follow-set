@@ -4,7 +4,39 @@
 
 This repository contains the FIRST and FOLLOW sets generated from the PORTIA programming language grammar. These sets are essential for parser construction and will be integrated into the main PORTIA compiler.
 
-## 📋 Purpose
+## � Quick Start - Using the Calculator
+
+### When you update the grammar (`grammar/CFG.txt`):
+
+1. **Edit the grammar file**
+   ```bash
+   # Open and modify grammar/CFG.txt with your changes
+   ```
+
+2. **Run the generator**
+   ```bash
+   cd src
+   python main.py
+   ```
+
+3. **Check the updated outputs**
+   - `output/FIRST_FOLLOW_RAW.txt` - Updated raw sets
+   - `docs/FIRST_FOLLOW_SETS.md` - Updated visualized sets
+
+4. **Verify the changes**
+   - Review the generated sets for correctness
+   - Check for any new conflicts or ambiguities
+   - Ensure all non-terminals have valid FIRST/FOLLOW sets
+
+### Output Files Updated Automatically:
+✅ `output/FIRST_FOLLOW_RAW.txt` - Machine-readable format  
+✅ `docs/FIRST_FOLLOW_SETS.md` - Human-readable tables with statistics
+
+> **Note**: The calculator automatically handles epsilon productions, computes sets iteratively until fixpoint, and validates the grammar structure.
+
+---
+
+## �📋 Purpose
 
 FIRST and FOLLOW sets are used for:
 - **LL(1) Parser Construction**: Verifying the grammar is suitable for predictive parsing
@@ -99,28 +131,15 @@ The PORTIA grammar includes:
 - **Operators**: Arithmetic, relational, logical, and compound assignment
 - **Comments**: Single-line (`//`) and multi-line (`/* */`)
 
-## 🚀 Usage
+## � Reference Documentation
 
-### Regenerating FIRST and FOLLOW Sets
+**Grammar Visualization**: Open [`docs/CFG_Visualization.md`](docs/CFG_Visualization.md) for the complete human-readable grammar documentation with organized sections.
 
-If you modify the grammar (`grammar/CFG.txt`), regenerate the sets:
+**Algorithm Details**: See [`docs/ALGORITHM.md`](docs/ALGORITHM.md) for the FIRST/FOLLOW computation algorithms and implementation details.
 
-```bash
-cd src
-python main.py
-```
-
-This will update:
-- `output/FIRST_FOLLOW_RAW.txt` - Raw format
-- `docs/FIRST_FOLLOW_SETS.md` - Visualized format
-
-### Viewing the Sets
-
-**Raw Format**: Open `output/FIRST_FOLLOW_RAW.txt` for a simple text-based view.
-
-**Visualized Format**: Open `docs/FIRST_FOLLOW_SETS.md` for formatted tables with statistics.
-
-**Grammar Reference**: Open `docs/CFG_Visualization.md` for the complete grammar documentation.
+**Generated Sets**: 
+- [`output/FIRST_FOLLOW_RAW.txt`](output/FIRST_FOLLOW_RAW.txt) - Machine-readable format
+- [`docs/FIRST_FOLLOW_SETS.md`](docs/FIRST_FOLLOW_SETS.md) - Human-readable tables with statistics
 
 ## 🔗 Integration with PORTIA Compiler
 
