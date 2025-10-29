@@ -37,8 +37,11 @@ class FollowSetCalculator:
         
         # Iteratively compute FOLLOW sets until no changes
         changed = True
+        iterations = 0
         while changed:
             changed = False
+            iterations += 1
+            
             for non_terminal in self.parser.non_terminals:
                 old_size = len(self.follow_sets[non_terminal])
                 self._compute_follow(non_terminal)
@@ -54,12 +57,29 @@ class FollowSetCalculator:
         Args:
             non_terminal (str): The non-terminal to compute FOLLOW set for
         """
-        # TODO: Implement FOLLOW set computation logic
-        # For each production A -> αBβ
-        # Add FIRST(β) - {epsilon} to FOLLOW(B)
-        # If epsilon in FIRST(β), add FOLLOW(A) to FOLLOW(B)
-        # For production A -> αB, add FOLLOW(A) to FOLLOW(B)
-        pass
+        # For each production A -> alpha B beta
+        for lhs, productions in self.parser.productions.items():
+            for production in productions:
+                # Find all occurrences of non_terminal in this production
+                for i, symbol in enumerate(production):
+                    if symbol == non_terminal:
+                        # Get beta (rest of production after this symbol)
+                        beta = production[i + 1:]
+                        
+                        if beta:
+                            # FOLLOW(B) includes FIRST(beta) - {EPSILON}
+                            first_of_beta = self.first_calc.get_first_of_sequence(beta)
+                            self.follow_sets[non_terminal].update(first_of_beta - {'EPSILON'})
+                            
+                            # If EPSILON in FIRST(beta), add FOLLOW(A) to FOLLOW(B)
+                            if 'EPSILON' in first_of_beta:
+                                if lhs in self.follow_sets:
+                                    self.follow_sets[non_terminal].update(self.follow_sets[lhs])
+                        else:
+                            # B is at the end: A -> alpha B
+                            # Add FOLLOW(A) to FOLLOW(B)
+                            if lhs in self.follow_sets:
+                                self.follow_sets[non_terminal].update(self.follow_sets[lhs])
     
     def get_follow(self, non_terminal):
         """

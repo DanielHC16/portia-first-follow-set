@@ -15,13 +15,15 @@ portia-first-follow-set/
 │   ├── 📄 CFG_Visualization.md     # Human-readable grammar documentation
 │   ├── 📄 ALGORITHM.md             # FIRST/FOLLOW algorithm explanation
 │   ├── 📄 PROJECT_STRUCTURE.md     # This file
-│   ├── 📄 FIRST_SETS.md            # Generated FIRST sets (to be added)
-│   └── 📄 FOLLOW_SETS.md           # Generated FOLLOW sets (to be added)
+│   └── 📄 FIRST_FOLLOW_SETS.md     # ✨ Generated FIRST & FOLLOW sets (visualized)
+│
+├── 📂 output/
+│   └── 📄 FIRST_FOLLOW_RAW.txt     # ✨ Generated FIRST & FOLLOW sets (raw format)
 │
 └── 📂 src/
     ├── 📄 __init__.py              # Package initialization
-    ├── 📄 main.py                  # Main entry point
-    ├── 📄 parser.py                # Grammar parser module
+    ├── 📄 main.py                  # Main entry point for generation
+    ├── 📄 grammar_parser.py        # Grammar parser module
     ├── 📄 first_set.py             # FIRST set calculator
     └── 📄 follow_set.py            # FOLLOW set calculator
 ```
@@ -48,8 +50,13 @@ portia-first-follow-set/
 | `CFG_Visualization.md` | Human-readable formatted grammar with sections |
 | `ALGORITHM.md` | Explanation of FIRST and FOLLOW set computation algorithms |
 | `PROJECT_STRUCTURE.md` | This file - repository organization reference |
-| `FIRST_SETS.md` | Generated FIRST sets for all grammar symbols (to be added) |
-| `FOLLOW_SETS.md` | Generated FOLLOW sets for all non-terminals (to be added) |
+| `FIRST_FOLLOW_SETS.md` | ✨ **Generated** FIRST and FOLLOW sets in visualized table format |
+
+### Output Directory
+
+| File | Purpose |
+|------|---------|
+| `FIRST_FOLLOW_RAW.txt` | ✨ **Generated** FIRST and FOLLOW sets in raw text format |
 
 ### Source Directory
 
@@ -57,7 +64,7 @@ portia-first-follow-set/
 |------|---------|
 | `__init__.py` | Makes src a Python package, exports main classes |
 | `main.py` | Entry point for generating FIRST and FOLLOW sets |
-| `parser.py` | Parses EBNF grammar from CFG.txt |
+| `grammar_parser.py` | Parses EBNF grammar from CFG.txt |
 | `first_set.py` | Computes FIRST sets for all symbols |
 | `follow_set.py` | Computes FOLLOW sets for all non-terminals |
 

@@ -28,9 +28,9 @@
 
 ```
 program         → s_comment m_comment global_dec s_comment m_comment 
-                  function s_comment m_comment main s_comment m_comment
+                  function s_comment m_comment main_func s_comment m_comment
 
-main            → int main ( ) { main_body }
+main_func       → int main ( ) { main_body }
 
 main_body       → import_block local_block statement_list return intlit ;
 ```
@@ -458,7 +458,7 @@ m_comment       → /* comments */
 
 | Category | Non-Terminals |
 |----------|---------------|
-| **Program** | program, main, main_body |
+| **Program** | program, main_func, main_body |
 | **Declarations** | global_dec, local_dec, mutability, multi_dec |
 | **Data Types** | dtype, value, size, data_type |
 | **Arrays** | arr_1D, arr_2D, arr_1D_init, arr_2D_init, arr_value_1D, arr_value_2D |

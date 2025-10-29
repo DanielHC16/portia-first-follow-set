@@ -1,4 +1,6 @@
-program -> s_comment m_comment global_dec s_comment m_comment function s_comment m_comment main s_comment m_comment
+program -> s_comment m_comment global_dec s_comment m_comment function s_comment m_comment main_func s_comment m_comment
+s_comment -> // comment | EPSILON
+m_comment -> /* comments */ | EPSILON
 global_dec -> global mutability dtype id = value multi_dec ; global_dec | arr_1D ; global_dec | weave_def global_dec | EPSILON
 mutability -> var | const
 multi_dec -> , id = value multi_dec | EPSILON
@@ -90,9 +92,7 @@ while_stmt -> while ( condition ) { ctrl_body }
 do_stmt -> do { ctrl_body } while ( condition ) ;
 ret_stmt -> return ret_value ;
 ret_value -> value | id | logical_expr | EPSILON
-main -> int main ( ) { main_body }
+main_func -> int main ( ) { main_body }
 main_body -> import_block local_block statement_list return intlit ;
-s_comment -> // comment | EPSILON
-m_comment -> /* comments */ | EPSILON
 data_type -> dtype
 typecast_expr -> ( data_type ) expression

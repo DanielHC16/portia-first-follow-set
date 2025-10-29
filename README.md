@@ -24,17 +24,41 @@ FIRST and FOLLOW sets are used for:
 ```
 first-follow-set/
 ├── grammar/
-│   └── CFG.txt                 # PORTIA language grammar (EBNF format)
+│   └── CFG.txt                     # PORTIA language grammar (EBNF format)
 ├── docs/
-│   ├── CFG_Visualization.md    # Human-readable grammar reference
-│   ├── ALGORITHM.md            # FIRST/FOLLOW computation explanation
-│   ├── PROJECT_STRUCTURE.md    # Repository organization
-│   ├── FIRST_SETS.md           # Generated FIRST sets (to be added)
-│   └── FOLLOW_SETS.md          # Generated FOLLOW sets (to be added)
+│   ├── CFG_Visualization.md        # Human-readable grammar reference
+│   ├── ALGORITHM.md                # FIRST/FOLLOW computation explanation
+│   ├── PROJECT_STRUCTURE.md        # Repository organization
+│   └── FIRST_FOLLOW_SETS.md        # ✨ Generated sets (visualized tables)
+├── output/
+│   └── FIRST_FOLLOW_RAW.txt        # ✨ Generated sets (raw text format)
 ├── src/
-│   └── (Helper scripts for set generation)
+│   ├── main.py                     # Generator script
+│   ├── grammar_parser.py           # CFG parser
+│   ├── first_set.py                # FIRST set calculator
+│   └── follow_set.py               # FOLLOW set calculator
 └── README.md
 ```
+
+## 📊 Generated Files
+
+### Raw Format (`output/FIRST_FOLLOW_RAW.txt`)
+Plain text format with FIRST and FOLLOW sets for all non-terminals. Easy to parse programmatically.
+
+**Example:**
+```
+FIRST(program) = { /*, //, ;, bool, char, double, float, func, global, id, int, long, string, weave }
+FOLLOW(program) = { $ }
+```
+
+### Visualized Format (`docs/FIRST_FOLLOW_SETS.md`)
+Markdown tables with formatted FIRST and FOLLOW sets, including statistics and summary information.
+
+**Features:**
+- Organized tables for easy reference
+- Summary statistics (average set sizes, largest sets, etc.)
+- Non-terminals with epsilon productions highlighted
+- Total of **98 non-terminals** and **72 terminals**
 
 ## 📖 Grammar Specification
 
@@ -58,7 +82,7 @@ global_dec -> global mutability dtype id = value multi_dec ; global_dec | EPSILO
 - `( A )` is three symbols: `(`, `A`, `)`
 - `(A)` is one symbol: `(A)`
 
-## � PORTIA Language Features
+## 📖 PORTIA Language Features
 
 The PORTIA grammar includes:
 
@@ -71,6 +95,29 @@ The PORTIA grammar includes:
 - **I/O Operations**: `trap()` for input, `thread()` for output
 - **Operators**: Arithmetic, relational, logical, and compound assignment
 - **Comments**: Single-line (`//`) and multi-line (`/* */`)
+
+## 🚀 Usage
+
+### Regenerating FIRST and FOLLOW Sets
+
+If you modify the grammar (`grammar/CFG.txt`), regenerate the sets:
+
+```bash
+cd src
+python main.py
+```
+
+This will update:
+- `output/FIRST_FOLLOW_RAW.txt` - Raw format
+- `docs/FIRST_FOLLOW_SETS.md` - Visualized format
+
+### Viewing the Sets
+
+**Raw Format**: Open `output/FIRST_FOLLOW_RAW.txt` for a simple text-based view.
+
+**Visualized Format**: Open `docs/FIRST_FOLLOW_SETS.md` for formatted tables with statistics.
+
+**Grammar Reference**: Open `docs/CFG_Visualization.md` for the complete grammar documentation.
 
 ## 🔗 Integration with PORTIA Compiler
 
