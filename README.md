@@ -149,10 +149,32 @@ This repository will be linked to the main PORTIA compiler as a reference for:
 - Grammar validation
 - Development documentation
 
-## 👥 Team
+## 👥 Team LoomVI
 
-Internal tool for the PORTIA development team.
+**PORTIA Programming Language Development Team**
+
+| Role | Team Member |
+|------|-------------|
+| **Team Leader** | Jonalene Ryza B. Abundo |
+| **Core Developer** | Daniel Hardy C. Camacho |
+| **Documentation Team Lead** | Mariel Kim R. Vaflor |
+| **Finance Team Lead** | Carla R. Mabutas |
+| **Q/A Team** | Hershey Anne P. Dalangin |
+| **Q/A Team** | Sydney Angeleve M. Peña |
+
+### 🤝 Collaborative Development
+
+While each team member has a designated role, **LoomVI operates as a fully collaborative unit**. All team members actively contribute across different aspects of the PORTIA compiler project, including:
+
+- Grammar design and refinement
+- Parser implementation and testing
+- Documentation and technical writing
+- Quality assurance and validation
+- Project planning and coordination
+
+This cross-functional approach ensures that every team member has a comprehensive understanding of the PORTIA language and contributes to all phases of development.
 
 ---
 
 **Note**: This is a development resource for the PORTIA compiler project.
+
