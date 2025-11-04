@@ -6,30 +6,35 @@ mutability -> var | const
 multi_dec -> , id = value multi_dec | EPSILON
 dtype -> int | long | float | double | char | string | bool
 value -> intlit | longlit | floatlit | doublelit | charlit | stringlit | boollit
-arr_1D -> dtype id [ size ] arr_1D_init arr_2D arr_1D | arr_1D_UD | EPSILON
-arr_1D_init -> { arr_value_1D } | EPSILON
-arr_value_1D -> arr_1D_cont | arr_1D_cont_val
-arr_1D_cont -> value arr_1D_cont_val } | EPSILON
-arr_1D_cont_val -> , value arr_1D_cont_val | EPSILON
-arr_1D_UD -> id [ size ] = value ; arr_1D_UD | EPSILON
-arr_2D -> arr_2_2D | EPSILON
-arr_2_2D -> [ size ] arr_2D_init
-arr_2D_init -> EPSILON | { arr_value_2D }
-arr_value_2D -> { arr_1D_cont } arr_value_2D_cont
-arr_value_2D_cont -> , { arr_1D_cont } arr_value_2D_cont | EPSILON
-weave_def -> weave id { field_list }
+arr_1D -> arr_dtype id [ size ] arr_1D_tail
+arr_dtype -> dtype | EPSILON
+arr_1D_tail -> arr_1D_init | arr_2D | EPSILON
+arr_1D_init -> = { elem_1D_list }
+elem_1D_list -> value elem_1D_list_tail | EPSILON
+elem_1D_list_tail -> , value elem_1D_list_tail | EPSILON
+arr_2D -> [ size ] arr_2D_init arr_2D_UD
+arr_2D_init -> = { elem_2D_list } | EPSILON
+arr_2D_UD -> = value | EPSILON
+elem_2D_list -> { elem_1D_list } elem_2D_list_tail | EPSILON
+elem_2D_list_tail -> , { elem_1D_list } elem_2D_list_tail | EPSILON
+weave_def -> weave id { field_list } ;
 field_list -> field_dec field_list | EPSILON
-field_dec -> field_type id array_spec_opt field_dec_cont ;
+field_dec -> field_type id field_array_spec_opt field_dec_cont ;
 field_dec_cont -> , id field_dec_cont | EPSILON
-array_spec_opt -> [ size ] | EPSILON
+field_array_spec_opt -> [ size ] | EPSILON
 field_type -> dtype | weave_id
 weave_id -> id
 size -> intlit
 function -> function_def function | EPSILON
 function_def -> func ret_type id ( param ) { function_body }
-ret_type -> dtype | void
-param -> dtype id param_cont | EPSILON
-param_cont -> , dtype id param_cont | EPSILON
+ret_type -> dtype | id ret_struct | void
+ret_struct -> [ size ] ret_2D | . id | EPSILON
+ret_2D -> [ size ] | EPSILON
+param -> param_type id param_struct param_cont | EPSILON
+param_type -> dtype | id param_struct
+param_struct -> [ size ] param_2D | EPSILON
+param_2D -> [ size ] | EPSILON
+param_cont -> , param | EPSILON
 function_body -> import_block local_block statement_list ret_stmt
 import_block -> import_stmt import_block | EPSILON
 import_stmt -> using id import_cont ;
@@ -37,7 +42,7 @@ import_cont -> , id import_cont | EPSILON
 local_block -> local_dec local_block | EPSILON
 local_dec -> local mutability dtype id = value multi_dec ;
 statement_list -> statement statement_list | EPSILON
-statement -> expression ; | I_O_stmt | assign_stmt ; | ctrl_struct
+statement -> expression ; | I_O_stmt | assign_stmt ; | ctrl_struct | arr_1D ; | EPSILON
 expression -> logical_expr
 logical_expr -> rel_expr logical_expr_cont
 logical_expr_cont -> && rel_expr logical_expr_cont | || rel_expr logical_expr_cont | EPSILON
@@ -47,11 +52,11 @@ equal_sym -> = | EPSILON
 arith_expr -> term add_min_cont
 add_min_cont -> + term add_min_cont | - term add_min_cont | EPSILON
 term -> factor mult_div_modulo_cont
-mult_div_modulo_cont -> * factor mult_div_modulo_cont | / factor mult_div_modulo_cont | EPSILON
-factor -> numeric_factor
-numeric_factor -> - numeric_factor | ( cast_val ) | numeric_atom | ( arith_expr )
-cast_val -> data_type ) factor | value )
-numeric_atom -> num_lit_type | function_call | -- id | ++ id
+mult_div_modulo_cont -> * factor mult_div_modulo_cont | / factor mult_div_modulo_cont | % factor mult_div_modulo_cont | EPSILON
+factor -> primary
+primary -> - primary | cast_val | atom | ( arith_expr )
+cast_val -> ( dtype ) factor
+atom -> num_lit_type | function_call | -- id | ++ id | id | stringlit | charlit | boollit
 num_lit_type -> whole_lit | frac_lit
 I_O_stmt -> input_stmt | output_stmt
 input_stmt -> trap ( iden ) ;
@@ -63,26 +68,32 @@ expression1 -> id expr1_cont | value | string_expr | string_lit | iden1
 expr1_cont -> , id expr1_cont | EPSILON
 string_expr -> string_value .. string_value
 string_value -> stringlit | string_expr | typecast_expr | function_call | value
+typecast_expr -> ( dtype ) value
 function_call -> id ( arg multi_arg )
 arg -> value | EPSILON
 multi_arg -> , id ( arg ) multi_arg | EPSILON
-iden1 -> id [ size ] | id . id iden1_cont
+iden1 -> id iden1_weave
+iden1_weave -> [ size ] iden1_tail | . id iden1_cont
+iden1_tail -> [ size ] | EPSILON
 iden1_cont -> , id . id iden1_cont | EPSILON
 assign_stmt -> id array_spec_opt assign_stmt_op
-assign_stmt_op -> = value | += value | -= value | *= value | /= value | %= value
-ctrl_struct -> conditional_stmt | loop_stmt | EPSILON
-conditional_stmt -> if_stmt | switch_stmt | EPSILON
-if_stmt -> if ( condition ) { ctrl_body ret_stmt } else_if_ei_stmt
+array_spec_opt -> [ size ] array_spec_2D | EPSILON
+array_spec_2D -> [ size ] | EPSILON
+assign_stmt_op -> = expression | += expression | -= expression | *= expression | /= expression | %= expression
+ctrl_struct -> conditional_stmt | loop_stmt
+conditional_stmt -> if_stmt | switch_stmt
+if_stmt -> if ( condition ) { ctrl_body ret_ctrl_body } else_if_ei_stmt
 condition -> logical_expr
 else_if_ei_stmt -> else else_stmt | EPSILON
-else_stmt -> if_stmt | { ctrl_body ret_stmt }
+else_stmt -> if_stmt | { ctrl_body ret_ctrl_body }
 switch_stmt -> switch ( switch_val ) { case_stmt default_stmt }
 switch_val -> id | intlit | stringlit | arith_expr
 case_stmt -> case case_val : ctrl_body break ; case_stmt_cont
 case_stmt_cont -> case_stmt case_stmt_cont | EPSILON
-case_val -> id
-ctrl_body -> local_dec expression input_stmt output_stmt assign_stmt ctrl_struct
-default_stmt -> default ctrl_body | EPSILON
+case_val -> value
+ctrl_body -> local_block statement_list ret_ctrl_body
+ret_ctrl_body -> ret_stmt | EPSILON
+default_stmt -> default : ctrl_body | EPSILON
 loop_stmt -> for_stmt | while_stmt | do_stmt
 for_stmt -> for ( initializer ; condition ; update ) { ctrl_body }
 initializer -> local var dtype id = value multi_dec | assign_stmt | EPSILON
@@ -94,5 +105,4 @@ ret_stmt -> return ret_value ;
 ret_value -> value | id | logical_expr | EPSILON
 main_func -> int main ( ) { main_body }
 main_body -> import_block local_block statement_list return intlit ;
-data_type -> dtype
-typecast_expr -> ( data_type ) expression
+
