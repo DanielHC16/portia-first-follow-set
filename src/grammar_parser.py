@@ -19,6 +19,7 @@ class GrammarParser:
         self.productions = {}
         self.terminals = set()
         self.non_terminals = set()
+        self.non_terminals_order = []  # Preserve order from grammar file
         self.start_symbol = None
     
     def parse(self):
@@ -48,7 +49,9 @@ class GrammarParser:
             if self.start_symbol is None:
                 self.start_symbol = lhs
             
-            # Add to non-terminals
+            # Add to non-terminals and preserve order
+            if lhs not in self.non_terminals:
+                self.non_terminals_order.append(lhs)
             self.non_terminals.add(lhs)
             
             # Split RHS by "|" for alternatives

@@ -80,8 +80,8 @@ def save_raw_output(parser, first_sets, follow_sets, output_file):
         f.write("FIRST SETS\n")
         f.write("-" * 70 + "\n\n")
         
-        # Sort non-terminals for consistent output
-        non_terminals = sorted(parser.non_terminals)
+        # Use grammar order for consistent output
+        non_terminals = parser.non_terminals_order
         
         for nt in non_terminals:
             first_set = sorted(first_sets.get(nt, set()))
@@ -132,7 +132,7 @@ def save_visualized_output(parser, first_sets, follow_sets, output_file):
         f.write("| Non-Terminal | → | FIRST Set |\n")
         f.write("|--------------|---|-----------|\n")
         
-        non_terminals = sorted(parser.non_terminals)
+        non_terminals = parser.non_terminals_order
         for nt in non_terminals:
             first_set = sorted(first_sets.get(nt, set()))
             # Replace EPSILON with ε for better visualization

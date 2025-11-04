@@ -52,7 +52,7 @@ htmlcov/
 *.log
 *.out
 *.txt.bak
-output/
+
 results/
 
 # OS

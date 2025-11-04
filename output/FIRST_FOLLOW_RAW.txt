@@ -1,0 +1,226 @@
+PORTIA FIRST AND FOLLOW SETS (RAW FORMAT)
+======================================================================
+
+FIRST SETS
+----------------------------------------------------------------------
+
+FIRST(program) = { /*, //, bool, char, double, float, func, global, id, int, long, string, weave }
+FIRST(s_comment) = { //, EPSILON }
+FIRST(m_comment) = { /*, EPSILON }
+FIRST(global_dec) = { EPSILON, bool, char, double, float, global, id, int, long, string, weave }
+FIRST(mutability) = { const, var }
+FIRST(multi_dec) = { ,, EPSILON }
+FIRST(dtype) = { bool, char, double, float, int, long, string }
+FIRST(value) = { boollit, charlit, doublelit, floatlit, intlit, longlit, stringlit }
+FIRST(arr_1D) = { bool, char, double, float, id, int, long, string }
+FIRST(arr_dtype) = { EPSILON, bool, char, double, float, int, long, string }
+FIRST(arr_1D_tail) = { =, EPSILON, [ }
+FIRST(arr_1D_init) = { = }
+FIRST(elem_1D_list) = { EPSILON, boollit, charlit, doublelit, floatlit, intlit, longlit, stringlit }
+FIRST(elem_1D_list_tail) = { ,, EPSILON }
+FIRST(arr_2D) = { [ }
+FIRST(arr_2D_init) = { =, EPSILON }
+FIRST(arr_2D_UD) = { =, EPSILON }
+FIRST(elem_2D_list) = { EPSILON, { }
+FIRST(elem_2D_list_tail) = { ,, EPSILON }
+FIRST(weave_def) = { weave }
+FIRST(field_list) = { EPSILON, bool, char, double, float, id, int, long, string }
+FIRST(field_dec) = { bool, char, double, float, id, int, long, string }
+FIRST(field_dec_cont) = { ,, EPSILON }
+FIRST(field_array_spec_opt) = { EPSILON, [ }
+FIRST(field_type) = { bool, char, double, float, id, int, long, string }
+FIRST(weave_id) = { id }
+FIRST(size) = { intlit }
+FIRST(function) = { EPSILON, func }
+FIRST(function_def) = { func }
+FIRST(ret_type) = { bool, char, double, float, id, int, long, string, void }
+FIRST(ret_struct) = { ., EPSILON, [ }
+FIRST(ret_2D) = { EPSILON, [ }
+FIRST(param) = { EPSILON, bool, char, double, float, id, int, long, string }
+FIRST(param_type) = { bool, char, double, float, id, int, long, string }
+FIRST(param_struct) = { EPSILON, [ }
+FIRST(param_2D) = { EPSILON, [ }
+FIRST(param_cont) = { ,, EPSILON }
+FIRST(function_body) = { (, ++, -, --, bool, boollit, char, charlit, do, double, float, for, frac_lit, id, if, int, local, long, return, string, stringlit, switch, thread, trap, using, while, whole_lit }
+FIRST(import_block) = { EPSILON, using }
+FIRST(import_stmt) = { using }
+FIRST(import_cont) = { ,, EPSILON }
+FIRST(local_block) = { EPSILON, local }
+FIRST(local_dec) = { local }
+FIRST(statement_list) = { (, ++, -, --, EPSILON, bool, boollit, char, charlit, do, double, float, for, frac_lit, id, if, int, long, string, stringlit, switch, thread, trap, while, whole_lit }
+FIRST(statement) = { (, ++, -, --, EPSILON, bool, boollit, char, charlit, do, double, float, for, frac_lit, id, if, int, long, string, stringlit, switch, thread, trap, while, whole_lit }
+FIRST(expression) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(logical_expr) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(logical_expr_cont) = { &&, (, ++, -, --, EPSILON, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(rel_expr) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(rel_expr_cont) = { !=, <, =, >, EPSILON }
+FIRST(equal_sym) = { =, EPSILON }
+FIRST(arith_expr) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(add_min_cont) = { +, -, EPSILON }
+FIRST(term) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(mult_div_modulo_cont) = { %, *, /, EPSILON }
+FIRST(factor) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(primary) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(cast_val) = { ( }
+FIRST(atom) = { ++, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(num_lit_type) = { frac_lit, whole_lit }
+FIRST(I_O_stmt) = { thread, trap }
+FIRST(input_stmt) = { trap }
+FIRST(iden) = { id }
+FIRST(iden_val) = { ., EPSILON, [ }
+FIRST(isize) = { EPSILON, [ }
+FIRST(output_stmt) = { thread }
+FIRST(expression1) = { (, boollit, charlit, doublelit, floatlit, id, intlit, longlit, string_lit, stringlit }
+FIRST(expr1_cont) = { ,, EPSILON }
+FIRST(string_expr) = { (, boollit, charlit, doublelit, floatlit, id, intlit, longlit, stringlit }
+FIRST(string_value) = { (, boollit, charlit, doublelit, floatlit, id, intlit, longlit, stringlit }
+FIRST(typecast_expr) = { ( }
+FIRST(function_call) = { id }
+FIRST(arg) = { EPSILON, boollit, charlit, doublelit, floatlit, intlit, longlit, stringlit }
+FIRST(multi_arg) = { ,, EPSILON }
+FIRST(iden1) = { id }
+FIRST(iden1_weave) = { ., [ }
+FIRST(iden1_tail) = { EPSILON, [ }
+FIRST(iden1_cont) = { ,, EPSILON }
+FIRST(assign_stmt) = { id }
+FIRST(array_spec_opt) = { EPSILON, [ }
+FIRST(array_spec_2D) = { EPSILON, [ }
+FIRST(assign_stmt_op) = { %=, *=, +=, -=, /=, = }
+FIRST(ctrl_struct) = { do, for, if, switch, while }
+FIRST(conditional_stmt) = { if, switch }
+FIRST(if_stmt) = { if }
+FIRST(condition) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FIRST(else_if_ei_stmt) = { EPSILON, else }
+FIRST(else_stmt) = { if, { }
+FIRST(switch_stmt) = { switch }
+FIRST(switch_val) = { (, ++, -, --, boollit, charlit, frac_lit, id, intlit, stringlit, whole_lit }
+FIRST(case_stmt) = { case }
+FIRST(case_stmt_cont) = { EPSILON, case }
+FIRST(case_val) = { boollit, charlit, doublelit, floatlit, intlit, longlit, stringlit }
+FIRST(ctrl_body) = { (, ++, -, --, EPSILON, bool, boollit, char, charlit, do, double, float, for, frac_lit, id, if, int, local, long, return, string, stringlit, switch, thread, trap, while, whole_lit }
+FIRST(ret_ctrl_body) = { EPSILON, return }
+FIRST(default_stmt) = { EPSILON, default }
+FIRST(loop_stmt) = { do, for, while }
+FIRST(for_stmt) = { for }
+FIRST(initializer) = { EPSILON, id, local }
+FIRST(update) = { ++, --, EPSILON, id }
+FIRST(up_post) = { ++, -- }
+FIRST(while_stmt) = { while }
+FIRST(do_stmt) = { do }
+FIRST(ret_stmt) = { return }
+FIRST(ret_value) = { (, ++, -, --, EPSILON, boollit, charlit, doublelit, floatlit, frac_lit, id, intlit, longlit, stringlit, whole_lit }
+FIRST(main_func) = { int }
+FIRST(main_body) = { (, ++, -, --, bool, boollit, char, charlit, do, double, float, for, frac_lit, id, if, int, local, long, return, string, stringlit, switch, thread, trap, using, while, whole_lit }
+
+======================================================================
+
+FOLLOW SETS
+----------------------------------------------------------------------
+
+FOLLOW(program) = { $ }
+FOLLOW(s_comment) = { $, /*, //, bool, char, double, float, func, global, id, int, long, string, weave }
+FOLLOW(m_comment) = { $, /*, //, bool, char, double, float, func, global, id, int, long, string, weave }
+FOLLOW(global_dec) = { /*, //, func, int }
+FOLLOW(mutability) = { bool, char, double, float, int, long, string }
+FOLLOW(multi_dec) = { ; }
+FOLLOW(dtype) = { ), id }
+FOLLOW(value) = { ), ,, .., :, ;, } }
+FOLLOW(arr_1D) = { ; }
+FOLLOW(arr_dtype) = { id }
+FOLLOW(arr_1D_tail) = { ; }
+FOLLOW(arr_1D_init) = { ; }
+FOLLOW(elem_1D_list) = { } }
+FOLLOW(elem_1D_list_tail) = { } }
+FOLLOW(arr_2D) = { ; }
+FOLLOW(arr_2D_init) = { ;, = }
+FOLLOW(arr_2D_UD) = { ; }
+FOLLOW(elem_2D_list) = { } }
+FOLLOW(elem_2D_list_tail) = { } }
+FOLLOW(weave_def) = { /*, //, bool, char, double, float, func, global, id, int, long, string, weave }
+FOLLOW(field_list) = { } }
+FOLLOW(field_dec) = { bool, char, double, float, id, int, long, string, } }
+FOLLOW(field_dec_cont) = { ; }
+FOLLOW(field_array_spec_opt) = { ,, ; }
+FOLLOW(field_type) = { id }
+FOLLOW(weave_id) = { id }
+FOLLOW(size) = { ] }
+FOLLOW(function) = { /*, //, int }
+FOLLOW(function_def) = { /*, //, func, int }
+FOLLOW(ret_type) = { id }
+FOLLOW(ret_struct) = { id }
+FOLLOW(ret_2D) = { id }
+FOLLOW(param) = { ) }
+FOLLOW(param_type) = { id }
+FOLLOW(param_struct) = { ), ,, id }
+FOLLOW(param_2D) = { ), ,, id }
+FOLLOW(param_cont) = { ) }
+FOLLOW(function_body) = { } }
+FOLLOW(import_block) = { (, ++, -, --, bool, boollit, char, charlit, do, double, float, for, frac_lit, id, if, int, local, long, return, string, stringlit, switch, thread, trap, while, whole_lit }
+FOLLOW(import_stmt) = { (, ++, -, --, bool, boollit, char, charlit, do, double, float, for, frac_lit, id, if, int, local, long, return, string, stringlit, switch, thread, trap, using, while, whole_lit }
+FOLLOW(import_cont) = { ; }
+FOLLOW(local_block) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(local_dec) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, local, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(statement_list) = { break, return, } }
+FOLLOW(statement) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(expression) = { ; }
+FOLLOW(logical_expr) = { ), ; }
+FOLLOW(logical_expr_cont) = { ), ; }
+FOLLOW(rel_expr) = { &&, (, ), ++, -, --, ;, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(rel_expr_cont) = { &&, (, ), ++, -, --, ;, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(equal_sym) = { (, ++, -, --, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(arith_expr) = { !=, &&, (, ), ++, -, --, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(add_min_cont) = { !=, &&, (, ), ++, -, --, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(term) = { !=, &&, (, ), +, ++, -, --, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(mult_div_modulo_cont) = { !=, &&, (, ), +, ++, -, --, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(factor) = { !=, %, &&, (, ), *, +, ++, -, --, /, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(primary) = { !=, %, &&, (, ), *, +, ++, -, --, /, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(cast_val) = { !=, %, &&, (, ), *, +, ++, -, --, /, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(atom) = { !=, %, &&, (, ), *, +, ++, -, --, /, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(num_lit_type) = { !=, %, &&, (, ), *, +, ++, -, --, /, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(I_O_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(input_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(iden) = { ) }
+FOLLOW(iden_val) = { ) }
+FOLLOW(isize) = { ) }
+FOLLOW(output_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(expression1) = { ) }
+FOLLOW(expr1_cont) = { ) }
+FOLLOW(string_expr) = { ), .. }
+FOLLOW(string_value) = { ), .. }
+FOLLOW(typecast_expr) = { ), .. }
+FOLLOW(function_call) = { !=, %, &&, (, ), *, +, ++, -, --, .., /, ;, <, =, >, boollit, charlit, frac_lit, id, stringlit, whole_lit }
+FOLLOW(arg) = { ), , }
+FOLLOW(multi_arg) = { ) }
+FOLLOW(iden1) = { ) }
+FOLLOW(iden1_weave) = { ) }
+FOLLOW(iden1_tail) = { ) }
+FOLLOW(iden1_cont) = { ) }
+FOLLOW(assign_stmt) = { ; }
+FOLLOW(array_spec_opt) = { %=, *=, +=, -=, /=, = }
+FOLLOW(array_spec_2D) = { %=, *=, +=, -=, /=, = }
+FOLLOW(assign_stmt_op) = { ; }
+FOLLOW(ctrl_struct) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(conditional_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(if_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(condition) = { ), ; }
+FOLLOW(else_if_ei_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(else_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(switch_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(switch_val) = { ) }
+FOLLOW(case_stmt) = { case, default, } }
+FOLLOW(case_stmt_cont) = { case, default, } }
+FOLLOW(case_val) = { : }
+FOLLOW(ctrl_body) = { break, return, } }
+FOLLOW(ret_ctrl_body) = { break, return, } }
+FOLLOW(default_stmt) = { } }
+FOLLOW(loop_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(for_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(initializer) = { ; }
+FOLLOW(update) = { ) }
+FOLLOW(up_post) = { ) }
+FOLLOW(while_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(do_stmt) = { (, ++, -, --, bool, boollit, break, char, charlit, do, double, float, for, frac_lit, id, if, int, long, return, string, stringlit, switch, thread, trap, while, whole_lit, } }
+FOLLOW(ret_stmt) = { break, return, } }
+FOLLOW(ret_value) = { ; }
+FOLLOW(main_func) = { $, /*, // }
+FOLLOW(main_body) = { } }
