@@ -264,7 +264,7 @@ This document contains the computed FIRST and FOLLOW sets for the PORTIA program
 ### FIRST Sets
 
 - **Average FIRST set size**: 5.17
-- **Largest FIRST set**: `function_body` with 27 elements
+- **Largest FIRST set**: `ctrl_body` with 27 elements
 - **Non-terminals with ε**: 49
 
 ### FOLLOW Sets
